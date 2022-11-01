@@ -9,6 +9,7 @@ require("dotenv").config({ path: "./config.env" });
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var recipesRouter = require("./routes/recipes");
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/recipes", recipesRouter);
 app.use("/users", usersRouter);
 
 const mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/recipe";
