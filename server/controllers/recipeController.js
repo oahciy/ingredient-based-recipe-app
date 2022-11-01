@@ -13,9 +13,12 @@ const fetch = require("node-fetch");
 
 const RecipesController = {
   All: async (req, res) => {
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin`;
+    // access drinks parameter
+    const { drinks } = req.params;
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drinks}`;
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data);
     res.json(data);
   },
 };
