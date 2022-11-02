@@ -1,5 +1,4 @@
 import SearchBar from "./components/SearchBar";
-import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 function App() {
   return (
@@ -7,9 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <h1>FirstLoad</h1>
-      <Router path="/" element={<SearchBar />}>
         <SearchBar />
-      </Router>
     </div>
   );
 }

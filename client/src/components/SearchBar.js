@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 // import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SearchBar() {
   // onClick gets all recipes
@@ -24,7 +24,7 @@ function SearchBar() {
         <button onClick={getRecipes}>Search</button>
         {recipes.drinks?.map((recipe) => (
           <div key={recipe.idDrink}>
-            <h1><Link to={`/recipe/${recipe.idDrink}`}>{recipe.strDrink}</Link></h1>
+            <h1><Link to={`/recipes/${recipe.idDrink}`}>{recipe.strDrink}</Link></h1>
             <img src={recipe.strDrinkThumb} alt={recipe.strDrink} />
           </div>
         ))}

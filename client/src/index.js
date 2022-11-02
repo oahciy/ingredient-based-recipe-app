@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SearchBar from './components/SearchBar';
+import Recipe from './components/Recipe';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 export default function App() {
-  
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          {/* currently the homepage is rendered using React component SearchBar, could be changed later */}
+          <Route index element={<SearchBar />} />
+          <Route path="recipes/:id" element={<Recipe />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
