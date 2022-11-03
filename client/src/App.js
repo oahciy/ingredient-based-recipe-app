@@ -1,13 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import SearchBar from "./components/SearchBar";
+import Recipe from './components/Recipe';
+
 
 function App() {
   return (
-    
-    <div className="App">
-      <header className="App-header"></header>
-      <h1>FirstLoad</h1>
-        <SearchBar />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          {/* currently the homepage is rendered using React component SearchBar, could be changed later */}
+          <Route index element={<SearchBar />} />
+          <Route path="recipe/:id" element={<Recipe />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
