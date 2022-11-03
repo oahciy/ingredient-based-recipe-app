@@ -14,7 +14,7 @@ export default function App() {
         <Route path="/">
           {/* currently the homepage is rendered using React component SearchBar, could be changed later */}
           <Route index element={<SearchBar />} />
-          <Route path="recipes/:id" element={<Recipe />} />
+          <Route path="recipe/:id" element={<Recipe />} />
         </Route>
       </Routes>
     </BrowserRouter>

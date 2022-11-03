@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/recipes", recipesRouter);
 app.use("/users", usersRouter);
-app.use("/recipes/:id", recipeRouter);
+app.use("/recipe", recipeRouter);
 
 const mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/recipe";
 const conn = mongoose.createConnection(mongoDbUrl);
