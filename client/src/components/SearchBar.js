@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 import SearchItemButton from "./SearchItemButton";
 
 function SearchBar() {
@@ -26,7 +27,7 @@ function SearchBar() {
   };
 
   const removeSearchItem = (item) => {
-    const newSearch = search.filter((word) => word != item);
+    const newSearch = search.filter((word) => word !== item);
     setSearchQuery(newSearch);
   };
 
@@ -72,6 +73,12 @@ function SearchBar() {
           ))}
         </div>
       </div>
+      {recipes.drinks?.map((recipe) => (
+          <div key={recipe.idDrink}>
+            <h1><Link to={`/recipe/${recipe.idDrink}`}>{recipe.strDrink}</Link></h1>
+            <img src={recipe.strDrinkThumb} alt={recipe.strDrink} />
+          </div>
+        ))}
     </div>
   );
 }
