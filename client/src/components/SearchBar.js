@@ -102,9 +102,9 @@ function SearchBar() {
         <div className="container">
           <div className="row">
             {recipes.drinks?.map((recipe) => (
-
+                <div className="col-md-3" key={recipe.idDrink}>
                   <RecipeCardGroup recipe={recipe} />
-
+                </div>
               ))}
           </div>
         </div>
