@@ -17,11 +17,9 @@ function Recipe() {
     let ingredientsArray = [];
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(
-          drink[`strIngredient${i}`]
-            // + " " +
-            // drink[`strMeasure${i}`]
-        );
+        const drinkPriceResponse = await getIngredientFromDb(drink[`strIngredient${i}`])
+        console.log(drinkPriceResponse)
+        ingredientsArray.push(`${drink[`strIngredient${i}`]} ${drink[`strMeasure${i}`]} ${drinkPriceResponse.data.strAlcohol}`);
       }
     }
     setContent(ingredientsArray);
@@ -32,11 +30,13 @@ function Recipe() {
   }, []);
 
   const getIngredientFromDb = async (item) => {
-    console.log('hey')
+    // console.log('hey')
     const response = await axios.get(`http://localhost:9000/ingredient/rum`)
-    console.log("response is " + response)
+    return response
+  //   console.log("response is " + response)
   };
-  getIngredientFromDb("rum")
+
+  // getIngredientFromDb("rum")
   return (
     <div>
       {console.log(drink)}
@@ -45,6 +45,7 @@ function Recipe() {
       <div><h3>{drink.strDrink}</h3></div>
       {content.map((ingredient) => (
         <div key={ingredient}>
+          {/* {getIngredientFromDb("rum")} */}
           <li>{ingredient} </li>
           
         </div>

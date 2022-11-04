@@ -3,6 +3,6 @@ const router = express.Router();
 const ingredientController = require("../controllers/ingredientController");
 
 /* GET ingredient data */
-router.get("/ingredient/rum", ingredientController.FindByName);
+router.get("/:blabla", ingredientController.FindByName);
 
 module.exports = router;

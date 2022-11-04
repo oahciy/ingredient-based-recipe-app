@@ -11,6 +11,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var recipesRouter = require("./routes/recipes");
 var recipeRouter = require("./routes/recipe");
+var ingredientRouter = require("./routes/ingredient");
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use("/", indexRouter);
 app.use("/recipes", recipesRouter);
 app.use("/users", usersRouter);
 app.use("/recipe", recipeRouter);
+app.use("/ingredient", ingredientRouter)
 
 const mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/recipe";
 const conn = mongoose.createConnection(mongoDbUrl);
