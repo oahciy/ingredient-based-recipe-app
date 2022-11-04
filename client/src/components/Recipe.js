@@ -18,9 +18,9 @@ function Recipe() {
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
         ingredientsArray.push(
-          drink[`strIngredient${i}`] +
-            " " +
-            drink[`strMeasure${i}`]
+          drink[`strIngredient${i}`]
+            // + " " +
+            // drink[`strMeasure${i}`]
         );
       }
     }
@@ -31,6 +31,12 @@ function Recipe() {
     getRecipe();
   }, []);
 
+  const getIngredientFromDb = async (item) => {
+    console.log('hey')
+    const response = await axios.get(`http://localhost:9000/ingredient/rum`)
+    console.log("response is " + response)
+  };
+  getIngredientFromDb("rum")
   return (
     <div>
       {console.log(drink)}
@@ -39,7 +45,8 @@ function Recipe() {
       <div><h3>{drink.strDrink}</h3></div>
       {content.map((ingredient) => (
         <div key={ingredient}>
-          <li>{ingredient}</li>
+          <li>{ingredient} </li>
+          
         </div>
       ))}
       <div>{drink.strInstructions}</div>
