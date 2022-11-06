@@ -54,6 +54,10 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.bg-height {
+  
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -90,6 +94,8 @@
 
 .background-gradient {
   background: linear-gradient(90deg, #E0B565ff 0%, #EA8507ff 100%);
+  height: '100%';
+  min-height: 100vh;
 }
 
 

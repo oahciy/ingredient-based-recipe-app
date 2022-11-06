@@ -21,6 +21,7 @@ function App() {
           }
         >
           {/* currently the homepage is rendered using React component SearchBar, could be changed later */}
+          <Route path="/" element={<RecipeCardGroup />} />
           <Route path="recipes" element={<RecipeCardGroup />} />
           <Route path="recipe/:id" element={<Recipe />} />
         </Route>
