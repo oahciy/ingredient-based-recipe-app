@@ -14,7 +14,7 @@ function RecipeCardGroup() {
     <div className="album py-5 background-gradient">
       <div className="container">
         <div className="row d-flex justify-content-center">
-          {recipes.drinks?.map((recipe) => (
+          {recipes?.map((recipe) => (
             <div className="col-9 col-md-6 col-lg-3" key={recipe.idDrink}>
               <RecipeCard recipe={recipe} search={search} />
             </div>
@@ -22,9 +22,6 @@ function RecipeCardGroup() {
         </div>
       </div>
     </div>
-    // <div className="col-md-3" key={props.recipe.idDrink}>
-    // <RecipeCard name={props.recipe.strDrink} img={props.recipe.strDrinkThumb} id={props.recipe.idDrink}/>
-    // </div>
   );
 }
 
