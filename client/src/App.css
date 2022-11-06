@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Righteous&display=swap');
 .App {
   text-align: center;
 }
@@ -53,11 +53,6 @@
   transform: scale(1.05);
   background-color: rgba(255, 255, 255, 0.8);
 }
-
-.bg-height {
-  
-}
-
 
 @keyframes App-logo-spin {
   from {

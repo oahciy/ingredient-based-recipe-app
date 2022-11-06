@@ -5,6 +5,8 @@ function Navbar() {
   const title = {
     fontFamily: "Montserrat, sans-serif",
     color: "white",
+    textShadow:
+      "-1px 0 #EA8507ff, 0 1px #EA8507ff, 1px 0 #EA8507ff, 0 -1px #EA8507ff",
   };
   return (
     <nav className="navbar">
