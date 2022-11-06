@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 import SearchItemButton from "./SearchItemButton";
-import BackgroundImage from '../img/background-image.png' 
-import RecipeCardGroup from "./recipe-card-group";
-
+import BackgroundImage from "../img/sb1.png";
+import { Outlet, Link } from "react-router-dom";
+import Navbar from "./NavBar";
 
 function SearchBar() {
   // onClick gets all recipes
@@ -44,72 +43,67 @@ function SearchBar() {
     }
   };
 
+  const searchBackground = {
+    background: `url(${BackgroundImage}) no-repeat center center/cover`,
+    height: "270px",
+  };
+
   return (
-    <div className="search-elements">
-      <div className="search-bar d-flex justify-content-center pb-2 text-center search-background" style={{backgroundImage: `url(${BackgroundImage})`}}>
+    <>
+      <div
+        className="search-bar d-flex search-background"
+        style={searchBackground}
+      >
         <div className="container">
-          <br /><br /><br />
-          <div className="row">
-            <div className="col-1"></div>
-            <div className="col-8">
-              
+          <Navbar />
+          <div className="row centre-search">
+            <div className="col-md-8 p-2">
               <input
-                className="input-field form-control"
+                className="input-field form-control inputbox-transparent"
                 type="text"
                 placeholder="Search for a recipe"
                 onChange={(e) => setSearch(e.target.value)}
               />
-
-              <div className="text-center">
-                {search?.map((item) => (
-                  <div
-                    className="p-2"
-                    key={item}
-                    onClick={() => removeSearchItem(item)}
-                  >
-                    <SearchItemButton item={item} />
-                  </div>
-                ))}
-              </div>
             </div>
-            <div className="col-1">
+            <div className="col-1 m-2">
               <button
-                className="add-button mx-2 btn btn-primary"
-                style={{backgroundColor: '#20577b', borderColor: '#20577b'}}
+                className="add-button btn btn-primary"
+                style={{ backgroundColor: "#20577b", borderColor: "#20577b" }}
                 onClick={addSearchWord}
               >
                 Add
               </button>
             </div>
-            <div className="col-1">
-              <button 
-                className="search-button btn btn-primary" 
-                style={{backgroundColor: '#20577b', borderColor: '#20577b'}}
-                onClick={getRecipes}
-              >
-                Search
-              </button>
+            <div className="col-1 m-2">
+              <Link to="/recipes">
+                <button
+                  className="search-button btn btn-primary"
+                  style={{
+                    backgroundColor: "#20577b",
+                    borderColor: "#20577b",
+                  }}
+                  onClick={getRecipes}
+                >
+                  Search
+                </button>
+              </Link>
             </div>
-            <div className="col-1"></div>
           </div>
-          <br /><br /><br />
-        </div>
-      </div>
-      <div className="search-items d-flex justify-content-center">
-        
-      </div>
-      <div className="album py-5 bg-light">
-        <div className="container">
-          <div className="row">
-            {recipes.drinks?.map((recipe) => (
-                <div className="col-md-3" key={recipe.idDrink}>
-                  <RecipeCardGroup recipe={recipe} />
-                </div>
-              ))}
+          <div className="d-flex justify-content-center m-2">
+            {search?.map((item) => (
+              <div
+                className=""
+                key={item}
+                onClick={() => removeSearchItem(item)}
+              >
+                <SearchItemButton item={item} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+      <Outlet context={{ recipes, setRecipes, search, setSearchQuery }} />
+    </>
   );
 }
 

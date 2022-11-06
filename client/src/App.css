@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 .App {
   text-align: center;
 }
@@ -28,6 +30,31 @@
   color: #61dafb;
 }
 
+.grow { 
+  transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+  transform: scale(1.05);
+  box-shadow: 5px 5px #db5540;
+}
+
+.centre-search {
+  justify-content: center;
+  align-items: center;
+}
+
+.inputbox-transparent {
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all .2s ease-in-out;
+}
+
+.inputbox-transparent:focus {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +63,35 @@
     transform: rotate(360deg);
   }
 }
+
+.sunray {
+  color: #E0B565ff;
+}
+
+.fulvous {
+  color: #EA8507ff;
+}
+
+.burnt-umber {
+  color: #7B312Aff;
+}
+
+.old-burgundy {
+  color: #3F242Eff;
+}
+
+.shiny-shamrock {
+  color: #689F7Eff;
+}
+
+.bg-shiny-shamrock {
+  background-color: #689F7Eff;
+}
+
+.background-gradient {
+  background: linear-gradient(90deg, #E0B565ff 0%, #EA8507ff 100%);
+}
+
+
+
+

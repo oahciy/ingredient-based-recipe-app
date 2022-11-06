@@ -1,24 +1,34 @@
-import React from 'react'
-import logoDark from '../img/logo-dark.png';
+import React from "react";
+import logoDark from "../img/logo-dark-removebg-preview.png";
 
 function Navbar() {
-
+  const title = {
+    fontFamily: "Montserrat, sans-serif",
+    color: "white",
+  };
   return (
-    <nav className="navbar" style={{backgroundColor: '#130c13'}}>
+    <nav className="navbar">
       <ul className="nav">
         <li className="nav-item">
           <a href="/">
-            <img src={logoDark} width="65" height="65" alt="Cocktail Logo"></img>
+            <img
+              src={logoDark}
+              width="65"
+              height="65"
+              alt="Cocktail Logo"
+            ></img>
           </a>
         </li>
-        <li className="nav-item" >
+        <li className="nav-item">
           <a className="nav-link " href="/">
-            <div style={{color: '#be1045'}}><h2>Less Waste More Taste</h2></div>
+            <div className="" style={title}>
+              <h2>Less Waste More Taste</h2>
+            </div>
           </a>
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

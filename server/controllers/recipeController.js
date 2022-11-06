@@ -8,7 +8,6 @@ const RecipesController = {
     const url = `https://www.thecocktaildb.com/api/json/v2/${process.env.COCKTAIL_API}/filter.php?i=${drinks}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     res.json(data);
   },
 
@@ -17,9 +16,8 @@ const RecipesController = {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     res.json(data);
-  }
+  },
 };
 
 module.exports = RecipesController;
