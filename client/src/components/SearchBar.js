@@ -1,17 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 import SearchItemButton from "./SearchItemButton";
-import BackgroundImage from '../img/background-image.png' 
-import RecipeCardGroup from "./recipe-card-group";
-
+import BackgroundImage from "../img/sb1.png";
+import { Outlet, Link } from "react-router-dom";
+import Navbar from "./NavBar";
 
 function SearchBar() {
   // onClick gets all recipes
   const [searchWord, setSearch] = useState("");
   const [search, setSearchQuery] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    const loadAllIngredients = async () => {
+      const response = await axios.get(
+        `http://localhost:9000/ingredient/returnAllIngredients`
+      );
+      setIngredients(response.data);
+    };
+    loadAllIngredients();
+    console.log(ingredients);
+  }, []);
 
   const getRecipes = async () => {
     if (search.length > 0) {
@@ -19,13 +31,17 @@ function SearchBar() {
       const response = await axios.get(
         `http://localhost:9000/recipes/${parameters}`
       );
-      setRecipes(response.data);
+      if (response.data !== null) {
+        setRecipes(response.data);
+      }
     } else if (searchWord.length > 0) {
       const parameter = searchWord.replace(" ", "_");
       const response = await axios.get(
         `http://localhost:9000/recipes/${parameter}`
       );
-      setRecipes(response.data);
+      if (response.data !== null) {
+        setRecipes(response.data);
+      }
     }
   };
 
@@ -44,26 +60,99 @@ function SearchBar() {
     }
   };
 
+  const searchBackground = {
+    background: `url(${BackgroundImage}) no-repeat center center/cover`,
+    height: "270px",
+  };
+
+  const suggestIngredients = (text) => {
+    let matches = [];
+    if (text.length > 0) {
+      matches = ingredients.filter((ingredient) => {
+        const regex = new RegExp("^" + text, "gi");
+        return ingredient.strIngredient.match(regex);
+      });
+      // sort by popularity
+      matches.sort((a, b) => {
+        return b.ingredientPopularity - a.ingredientPopularity;
+      });
+    }
+    setSearch(text);
+    setSuggestions(matches.slice(0, 5));
+  };
+
+  const addFromSuggestion = (item) => {
+    // add the search word to the search array if it's not there yet
+    if (!search.includes(item)) {
+      const updatedSearch = search.push(item);
+      setSearch(updatedSearch);
+    }
+  };
+
   return (
-    <div className="search-elements">
-      <div className="search-bar d-flex justify-content-center pb-2 text-center search-background" style={{backgroundImage: `url(${BackgroundImage})`}}>
+    <>
+      <div
+        className="search-bar d-flex search-background"
+        style={searchBackground}
+      >
         <div className="container">
-          <br /><br /><br />
-          <div className="row">
-            <div className="col-1"></div>
-            <div className="col-8">
-              
+          <Navbar />
+          <div className="row centre-search">
+            <div className="col-md-8 p-2">
               <input
-                className="input-field form-control"
+                className="input-field form-control inputbox-transparent"
                 type="text"
                 placeholder="Search for a recipe"
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => suggestIngredients(e.target.value)}
               />
-
-              <div className="text-center">
+            </div>
+            <div className="col-1 m-2">
+              <button
+                className="add-button btn btn-primary"
+                style={{ backgroundColor: "#20577b", borderColor: "#20577b" }}
+                onClick={addSearchWord}
+              >
+                Add
+              </button>
+            </div>
+            <div className="col-1 m-2">
+              <Link to="/recipes">
+                <button
+                  className="search-button btn btn-primary"
+                  style={{
+                    backgroundColor: "#20577b",
+                    borderColor: "#20577b",
+                  }}
+                  onClick={getRecipes}
+                >
+                  Search
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="m-2">
+            <div className="row d-flex justify-content-around">
+              <div className="col-6">
+                {suggestions.map((suggestion, i) => (
+                  <button
+                    className="search-item-button add-button m-2 btn btn-primary"
+                    style={{
+                      backgroundColor: "#25aec9",
+                      borderColor: "#25aec9",
+                    }}
+                    onClick={() => {
+                      addFromSuggestion(suggestion.strIngredient);
+                    }}
+                    key={`suggestion${i}`}
+                  >
+                    {suggestion.strIngredient}
+                  </button>
+                ))}
+              </div>
+              <div className="col-6">
                 {search?.map((item) => (
                   <div
-                    className="p-2"
+                    className="d-inline"
                     key={item}
                     onClick={() => removeSearchItem(item)}
                   >
@@ -72,44 +161,11 @@ function SearchBar() {
                 ))}
               </div>
             </div>
-            <div className="col-1">
-              <button
-                className="add-button mx-2 btn btn-primary"
-                style={{backgroundColor: '#20577b', borderColor: '#20577b'}}
-                onClick={addSearchWord}
-              >
-                Add
-              </button>
-            </div>
-            <div className="col-1">
-              <button 
-                className="search-button btn btn-primary" 
-                style={{backgroundColor: '#20577b', borderColor: '#20577b'}}
-                onClick={getRecipes}
-              >
-                Search
-              </button>
-            </div>
-            <div className="col-1"></div>
-          </div>
-          <br /><br /><br />
-        </div>
-      </div>
-      <div className="search-items d-flex justify-content-center">
-        
-      </div>
-      <div className="album py-5 bg-light">
-        <div className="container">
-          <div className="row">
-            {recipes.drinks?.map((recipe) => (
-                <div className="col-md-3" key={recipe.idDrink}>
-                  <RecipeCardGroup recipe={recipe} />
-                </div>
-              ))}
           </div>
         </div>
       </div>
-    </div>
+      <Outlet context={{ recipes, setRecipes, search, setSearchQuery }} />
+    </>
   );
 }
 
