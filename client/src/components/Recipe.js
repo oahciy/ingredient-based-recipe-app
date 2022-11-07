@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+// import  { Link } from "react-router-dom";
 
 function Recipe() {
   const [drink, setRecipe] = useState([]);
@@ -17,11 +17,10 @@ function Recipe() {
     let ingredientsArray = [];
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(
-          drink[`strIngredient${i}`] +
-            " " +
-            drink[`strMeasure${i}`]
-        );
+        const drinkPriceResponse = await getIngredientFromDb(drink[`strIngredient${i}`])
+        console.log(drinkPriceResponse.data)
+        ingredientsArray.push([drink[`strIngredient${i}`], drink[`strMeasure${i}`], drinkPriceResponse.data.priceUnit, drinkPriceResponse.data.trolleyLink]);
+        // ingredientsArray.push(`${drink[`strIngredient${i}`]} ${drink[`strMeasure${i}`]} buy for £${drinkPriceResponse.data.priceUnit}`);
       }
     }
     setContent(ingredientsArray);
@@ -31,15 +30,22 @@ function Recipe() {
     getRecipe();
   }, []);
 
+  const getIngredientFromDb = async (item) => {
+    const response = await axios.get(`http://localhost:9000/ingredient/${item}`)
+    console.log(response)
+    return response
+  };
+
   return (
     <div>
-      {console.log(drink)}
-      {console.log(content)}
       <div><img src={drink.strDrinkThumb} alt="Cocktail thumbnail"></img></div>
       <div><h3>{drink.strDrink}</h3></div>
       {content.map((ingredient) => (
         <div key={ingredient}>
-          <li>{ingredient}</li>
+          {/* {getIngredientFromDb("rum")} */}
+          {/* <Link to={`/recipe/${recipe.idDrink}`} style={{ textDecoration: "none" }}></Link> */}
+          {/* <li>{ingredient[0]} {ingredient[1]} <Link to={`https://www.trolley.co.uk/search/?from=search&q=${ingredient[0]}`} style={{ textDecoration: "none" }}>buy for £{ingredient[2]}</Link> </li> */}
+          <li>{ingredient[0]} {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a></li>
         </div>
       ))}
       <div>{drink.strInstructions}</div>
