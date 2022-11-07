@@ -5,9 +5,8 @@ const mongoose = require("mongoose");
 
 const IngredientController = {
   FindByName: async (req, res) => {
-    console.log("hey2")
-    const ingredient = await Ingredient.findOne({'strIngredient': 'rum' });
-    console.log(req.params.strIngredient)
+    const searchParams = req.params.strIngredient.toLowerCase()
+    const ingredient = await Ingredient.findOne({'strIngredient': searchParams });
     res.json(ingredient);
   },
     
