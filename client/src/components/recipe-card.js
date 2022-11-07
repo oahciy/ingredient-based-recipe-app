@@ -12,7 +12,10 @@ function RecipeCard({ recipe, search }) {
     );
     const drink = response.data.drinks[0];
     for (let i = 1; i < 16; i++) {
-      const ingredientExists = new RegExp(`${drink[`strIngredient${i}`]}`, "i");
+      const ingredientExists = new RegExp(
+        `${drink["^" + `strIngredient${i}`]}` + "$",
+        "i"
+      );
       if (drink[`strIngredient${i}`] !== null) {
         if (!search.some((ingredient) => ingredientExists.test(ingredient))) {
           count++;
