@@ -9,3 +9,5 @@ router.get("/returnAllIngredients", ingredientController.returnAllIngredients);
 router.get("/:strIngredient", ingredientController.FindByName);
 
 module.exports = router;
+
+module.exports = router;
