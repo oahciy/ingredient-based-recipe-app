@@ -53,9 +53,8 @@ function SearchBar() {
     // clear search bar with document query selector
     document.querySelector(".input-field").value = "";
     // add the search word to the search array if it's not there yet
-    if (!search.includes(searchWord) && searchWord.length > 0) {
+    if (!search.includes(searchWord)) {
       const updatedSearch = search.push(searchWord);
-      console.log(updatedSearch);
       setSearch(updatedSearch);
     }
   };
