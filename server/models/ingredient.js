@@ -12,10 +12,10 @@ const IngredientSchema = new mongoose.Schema({
   strAlcohol: String,
   strABV: Number,
   trolleyLink: String,
-  price: Number,
+  priceItem: Number,
   priceQuantity: String,
   priceUnit: Number,
-  lastUpdated: { type: Date, default: Date.now },
+  lastUpdated: Date,
 });
 
 const Ingredient = mongoose.model("Ingredient", IngredientSchema);
