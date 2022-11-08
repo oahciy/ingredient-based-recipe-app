@@ -12,6 +12,7 @@ var usersRouter = require("./routes/users");
 var recipesRouter = require("./routes/recipes");
 var recipeRouter = require("./routes/recipe");
 var ingredientRouter = require("./routes/ingredient");
+var ingredientRouter = require("./routes/ingredient");
 
 var app = express();
 

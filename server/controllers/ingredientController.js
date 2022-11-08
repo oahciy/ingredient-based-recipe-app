@@ -4,15 +4,14 @@ const axios = require("axios");
 
 const IngredientController = {
   FindByName: async (req, res) => {
-    console.log("hey2");
-    const ingredient = await Ingredient.findOne({ strIngredient: "rum" });
-    console.log(req.params.strIngredient);
+    const searchParams = req.params.strIngredient.toLowerCase()
+    const ingredient = await Ingredient.findOne({'strIngredient': searchParams });
     res.json(ingredient);
   },
   loadAllIngredients: async (req, res) => {
-    for (let i = 48; i < 616; i++) {
+    for (let i = 1; i < 616; i++) {
       if (i !== 332) {
-        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${i}`;
+        const url = `https://www.thecocktaildb.com/api/json/v2/${process.env.COCKTAIL_API}/lookup.php?iid=${i}`;
         const response = await axios.get(url);
         if (response.data.ingredients !== null) {
           const ingredient = response.data.ingredients[0];
