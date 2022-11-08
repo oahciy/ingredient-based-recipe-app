@@ -28,25 +28,3 @@ const fetchPrice = async (item) => {
 };
 
 module.exports = fetchPrice;
-
-
-// fetchPrice("cider").then((prices) => {
-//   const topFivePrices = prices.slice(0, 5).map(priceString => priceString.split(' '))
-//   const sortedTopFivePrices = topFivePrices.sort((a, b) => {
-//     if (a[2] < b[2]) return -1;
-//     if (a[2] > b[2]) return 1;
-//     return 0
-//   })
-//   const medianPrice = sortedTopFivePrices[2]
-//   console.log(sortedTopFivePrices)
-//   console.log(medianPrice);
-// });
-  
-
-// [0].split(' ')[2])
-
-// Comparator(a, b) {
-//   if (a[1] < b[1]) return -1;
-//   if (a[1] > b[1]) return 1;
-//   return 0;
-// }
