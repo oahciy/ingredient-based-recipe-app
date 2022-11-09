@@ -47,20 +47,22 @@ function SearchBar() {
     if (search.length > 0) {
       const parameters = search.map((word) => word.replace(" ", "_"));
       const response = await axios.get(
-        `http://localhost:9000/recipes/${parameters}`
+        `http://localhost:9000/cocktail/getall/${parameters}`
       );
       if (response.data !== null) {
+        
         setRecipes(response.data);
       }
     } else if (searchWord.length > 0) {
       const parameter = searchWord.replace(" ", "_");
       const response = await axios.get(
-        `http://localhost:9000/recipes/${parameter}`
+        `http://localhost:9000/cocktail/getall/${parameter}`
       );
       if (response.data !== null) {
         setRecipes(response.data);
       }
     }
+    
   };
 
   const removeSearchItem = (item) => {
@@ -107,6 +109,36 @@ function SearchBar() {
     }
     document.querySelector(".input-field").value = "";
   };
+
+
+  const sortRecipeArray = () => {
+    
+    for (let i = 0; i < recipes.length; i++) {
+      const recipeIngredients = []
+      for (let j=1; j<= 15; j++) {
+        if (recipes[i][`strIngredient${j}`] !== null) {
+          recipeIngredients.push(recipes[i][`strIngredient${j}`])
+        }
+      }
+      
+
+      var allUniqueIngredients = recipeIngredients.concat(search.filter((item) => recipeIngredients.indexOf(item) < 0));
+
+      const numberOfOverlapping = search.length + recipeIngredients.length - allUniqueIngredients.length
+
+      const missingIngredients = allUniqueIngredients.length - search.length
+       
+      recipes[i].ingredientsArray = recipeIngredients
+      recipes[i].numberOfOverlapping = numberOfOverlapping
+      recipes[i].missingIngredients = missingIngredients
+      console.log("hey")
+      console.log(recipes[i])
+    }
+
+    // array of how many ingredients are in common
+    // const numberOfOverlappingArray = recipes.map((recipe) => recipe.numberOfOverlapping)
+    return recipes
+  }
 
 
   return (

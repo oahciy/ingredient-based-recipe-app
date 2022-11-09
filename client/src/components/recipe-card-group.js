@@ -1,8 +1,7 @@
 import RecipeCard from "./recipe-card";
 import { useOutletContext } from "react-router-dom";
-import axios from "axios";
 import { useState, useEffect } from "react";
-// import searchResult from './SearchResult';
+import axios from "axios";
 
 function RecipeCardGroup() {
   const { recipes, setRecipes } = useOutletContext();
@@ -12,101 +11,44 @@ function RecipeCardGroup() {
     background: "#86b0b3",
   };
 
-  // const [missing, setMissing] = useState(0);
 
-  // const countMissing = async (recipe) => {
-  //   let count = 0;
-    
-  //   const response = await axios.get(
-  //     `http://localhost:9000/recipe/${recipe.idDrink}`
-  //   );
-    
-  //   const drink = response.data.drinks[0];
-  //   for (let i = 1; i < 16; i++) {
-  //     const ingredientExists = new RegExp(
-  //       "^" + `${drink[`strIngredient${i}`] + "$"}`,
-  //       "i"
+  // const [allDrinks, setDrinks] = useState(0);
+
+  // const fetchDrinks = async () => {
+  //   let drinksList = []
+  //   for (let i = 0; i < 10; i++) {
+  //     console.log('hey')
+  //     const idDrink = recipes[i].idDrink
+  //     const response = await axios.get(
+  //       `http://localhost:9000/recipe/${idDrink}`
   //     );
-  //     if (drink[`strIngredient${i}`] !== null) {
-  //       if (!search.some((ingredient) => ingredientExists.test(ingredient))) {
-  //         count++;
-  //       }
-  //     }
+  //     console.log(response)
+  //     const drink = response.data.drinks[0];
+  //     console.log(drink)
+  //     drinksList.push(drink)
+  //     // console.log(drinksList)
   //   }
-  // //   await setMissing(count);
+    
+  //   setDrinks(allDrinks);
   // };
 
   // useEffect(() => {
-  //   countMissing(recipe);
+  //   fetchDrinks();
   // }, []);
-  
-  const setMissingIngredients = async (recipes) => {
-    recipes.map((recipe, ind) => {
-      console.log(ind)
-      return ind
-      // let count = 0;
-    
-      // const response = await axios.get(
-      //   `http://localhost:9000/recipe/${recipe.idDrink}`
-      // );
-      
-      // const drink = response.data.drinks[0];
-      // for (let i = 1; i < 16; i++) {
-      //   const ingredientExists = new RegExp(
-      //     "^" + `${drink[`strIngredient${i}`] + "$"}`,
-      //     "i"
-      //   );
-      //   if (drink[`strIngredient${i}`] !== null) {
-      //     if (!search.some((ingredient) => ingredientExists.test(ingredient))) {
-      //       count++;
-      //     }
-      //   }
-      // }
-      // recipe.ingredientsMissing = count
-      // return recipe
-    })
-  }
-  const recipesWithMissingIngredients = setMissingIngredients(recipes)
-  // const recipesWithMissingIngredients = recipes.map((recipe, ind) => {
-  //   let count = 0;
-    
-  //   const response = await axios.get(
-  //     `http://localhost:9000/recipe/${recipe.idDrink}`
-  //   );
-    
-  //   const drink = response.data.drinks[0];
-  //   for (let i = 1; i < 16; i++) {
-  //     const ingredientExists = new RegExp(
-  //       "^" + `${drink[`strIngredient${i}`] + "$"}`,
-  //       "i"
-  //     );
-  //     if (drink[`strIngredient${i}`] !== null) {
-  //       if (!search.some((ingredient) => ingredientExists.test(ingredient))) {
-  //         count++;
-  //       }
-  //     }
-  //   }
-  //   recipe.ingredientsMissing = countMissing(recipe)
-  //   return recipe
-  // })
 
-  // const promises = Promise.all(recipesWithMissingIngredients)
-  // .then(results => {
-  //     console.log(results)
-  // })
-  // .catch(err => {
-  //     // Handle error
-  // });
-
+  // sortRecipeArray()
   return (
     <div className="album py-5 background-gradient">
       <div className="container">
         <div className="row d-flex justify-content-center">
           {recipes?.slice(0, 20).map((recipe) => (
-            // {console.log(recipe)}
-            <div className="col-9 col-md-6 col-lg-3" key={recipe.idDrink}>
+            <div
+              className="col-9 col-md-6 col-lg-3"
+              id={`${recipe.idDrink}`}
+              key={recipe.idDrink}
+            >
               <RecipeCard recipe={recipe} search={search} />
-              {console.log(recipe)}
+              {/* {console.log(recipes)} */}
             </div>
           ))}
         </div>
@@ -116,3 +58,100 @@ function RecipeCardGroup() {
 }
 
 export default RecipeCardGroup;
+// import RecipeCard from "./recipe-card";
+// import { useOutletContext } from "react-router-dom";
+// import axios from "axios";
+// import { useState, useEffect } from "react";
+// // import searchResult from './SearchResult';
+
+// const RecipeCardGroup = async () => {
+//   const { recipes, setRecipes } = useOutletContext();
+//   const { search, setSearchQuery } = useOutletContext();
+
+//   const background = {
+//     background: "#86b0b3",
+//   };
+
+//   // useEffect(() => {
+//   //   fetchDrinksData();
+//   // }, []);
+
+//   // const fetchDrinksData = () => {
+//   //   for (let i = 0; i < recipes.length; i++) {
+//   //     console.log(recipes)
+//   //   }
+//   // }
+
+//   // const [drink, setDrink] = useState([])
+
+//   // useEffect( (recipe) => { 
+//   //   async function fetchData() {
+//   //     try {
+//   //     const response = await axios.get(
+//   //       `http://localhost:9000/recipe/${recipe.idDrink}`
+//   //     );
+//   //     setDrink(response.data.drinks[0])
+//   //   } catch (err) {
+//   //       console.log(err);
+//   //     }
+//   //   }
+//   //   fetchData();
+//   // }, []);
+
+
+
+//   // const countMissing = async (recipe) => {
+//   //   let count = 0;
+    
+//   //   const response = await axios.get(
+//   //     `http://localhost:9000/recipe/${recipe.idDrink}`
+//   //   );
+    
+//   //   const drink = response.data.drinks[0];
+//   //   for (let i = 1; i < 16; i++) {
+//   //     const ingredientExists = new RegExp(
+//   //       "^" + `${drink[`strIngredient${i}`] + "$"}`,
+//   //       "i"
+//   //     );
+//   //     if (drink[`strIngredient${i}`] !== null) {
+//   //       if (!search.some((ingredient) => ingredientExists.test(ingredient))) {
+//   //         count++;
+//   //       }
+//   //     }
+//   //   }
+
+//   //   // await setMissing(count);
+//   //   return count
+    
+//   // };
+//   // const recipesWithMissing = await Promise.all(recipes.map(async recipe => recipe.ingredientsMissing = await countMissing(recipe)))
+
+
+//   return (
+//     <div className="album py-5 background-gradient">
+//       <div className="container">
+//         <div className="row d-flex justify-content-center">
+//           {recipes?.slice(0, 20).map((recipe) => (
+//             <div
+//               className="col-9 col-md-6 col-lg-3"
+//               id={`${recipe.idDrink}`}
+//               key={recipe.idDrink}
+//             >
+//               <RecipeCard recipe={recipe} search={search} />
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default RecipeCardGroup;
+
+// [1,2,3]
+// [1,2,3,6,7,8]
+// [1,2,7]
+// [1,2,6,7,8,9]
+
+// [1,6]
+

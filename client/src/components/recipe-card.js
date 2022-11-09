@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 // import axios from "axios";
 
 function RecipeCard({ recipe, search }) {
-
-
   return (
     <div className="card mb-4 grow" key={recipe.idDrink}>
       <Link to={`/recipe/${recipe.idDrink}`} style={{ textDecoration: "none" }}>
