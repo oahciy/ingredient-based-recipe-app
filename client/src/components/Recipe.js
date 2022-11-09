@@ -11,7 +11,7 @@ function Recipe() {
   const getRecipe = async () => {
     const id = window.location.href.split("/").reverse()[0];
     const response = await axios.get(`http://localhost:9000/recipe/${id}`);
-    const drink = response.data.drinks[0]
+    const drink = response.data.drinks[0];
     setRecipe(drink);
 
     let ingredientsArray = [];
@@ -43,9 +43,9 @@ function Recipe() {
       {content.map((ingredient) => (
         <div key={ingredient}>
           <li>
-            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ingredientInfo" aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
-            <div class="collapse" id="ingredientInfo">
-              <div class="card card-body">
+            <button className="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ingredientInfo" aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
+            <div className="collapse" id="ingredientInfo">
+              <div className="card card-body">
                 {ingredient[4]}
               </div>
             </div>

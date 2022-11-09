@@ -13,7 +13,7 @@ function RecipeCard({ recipe, search }) {
     const drink = response.data.drinks[0];
     for (let i = 1; i < 16; i++) {
       const ingredientExists = new RegExp(
-        `${drink["^" + `strIngredient${i}`]}` + "$",
+        "^" + `${drink[`strIngredient${i}`] + "$"}`,
         "i"
       );
       if (drink[`strIngredient${i}`] !== null) {
@@ -22,7 +22,7 @@ function RecipeCard({ recipe, search }) {
         }
       }
     }
-    setMissing(count);
+    await setMissing(count);
   };
 
   useEffect(() => {
