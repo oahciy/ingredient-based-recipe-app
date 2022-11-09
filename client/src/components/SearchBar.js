@@ -31,11 +31,8 @@ function SearchBar() {
         const typedSearchWord = document.querySelector(".input-field").value
 
         if (!search.includes(typedSearchWord) && typedSearchWord.length > 0) {
-          console.log('hey1')
           const updatedSearch = search.push(typedSearchWord);
-          console.log("updated search" + updatedSearch)
           setSearch(updatedSearch);
-          
         } 
         getRecipes()
         document.querySelector(".input-field").value = ''
@@ -47,8 +44,6 @@ function SearchBar() {
 
 
   const getRecipes = async () => {
-    console.log('function')
-    console.log(searchWord)
     if (search.length > 0) {
       const parameters = search.map((word) => word.replace(" ", "_"));
       const response = await axios.get(
@@ -113,13 +108,6 @@ function SearchBar() {
     document.querySelector(".input-field").value = "";
   };
 
-  // const searchWithEnterButton = (e) => {
-  //   e.preventDefault();
-  //   console.log('You pressed Enter1')
-  //   console.log('You pressed Enter2');
-  // }
-
-  
 
   return (
     <>
@@ -205,3 +193,17 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
+// Sorting strategy
+
+// [1,2,3] - search
+
+// [2,5,8,9,3] - recipe 1 - overlap is [2, 3] - length is 2, missing ingredients ingredients.length - overlap.length (3)
+
+// [2,6,7] - recipe 2 - overlap is [2] - length is 1, missing ingredients ingredients.length - overlap.length (2)
+
+// [1,2,3,4,7,9] - recipe 3 - overlap is [1,2,3] - length is 3, missing ingredients ingredients.length - overlap.length (3)
+
+// [2,5,8,3] - recipe 4 - overlap is [2, 3] - length is 2, missing ingredients ingredients.length - overlap.length (2)
+
+// sorting: 3, 4, 1, 2
