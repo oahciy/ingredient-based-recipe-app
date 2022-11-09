@@ -1,50 +1,33 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SearchBar from "./SearchBar";
-import mockAxios from "jest-mock-axios";
+import { MemoryRouter } from "react-router-dom";
+import axios from "axios";
 
-test("SearchBar contains a search bar", () => {
-  const { container } = render(<SearchBar />);
-  const inputField = container.getElementsByClassName("input-field");
-  expect(inputField).toHaveLength(1);
-});
-test("SearchBar contains a add button", () => {
-  const { container } = render(<SearchBar />);
-  const addBtn = container.getElementsByClassName("add-button");
-  expect(addBtn).toHaveLength(1);
-});
-test("SearchBar contains a search button", () => {
-  const { container } = render(<SearchBar />);
-  const searchBtn = container.getElementsByClassName("search-button");
-  expect(searchBtn).toHaveLength(1);
-});
-test("SearchBar contains a search item button after clicking add", () => {
-  const { container } = render(<SearchBar />);
-  //input to search bar
-  const inputField = container.getElementsByClassName("input-field");
-  inputField[0].value = "test";
-  const button = container.getElementsByClassName("add-button");
-  userEvent.click(button[0]);
-  const searchItemBtn = container.getElementsByClassName("search-item-button");
-  expect(searchItemBtn).toHaveLength(1);
-});
-test("SearchBar does not contain any search items if nothing has been added", () => {
-  const { container } = render(<SearchBar />);
-  //input to search bar
-  const inputField = container.getElementsByClassName("input-field");
-  inputField[0].value = "test";
-  const button = container.getElementsByClassName("add-button");
-  const searchItemBtn = container.getElementsByClassName("search-item-button");
-  expect(searchItemBtn).toHaveLength(0);
-});
-test("SearchBar removes a SearchItem button if the user clicks on it", () => {
-  const { container } = render(<SearchBar />);
-  //input to search bar
-  const inputField = container.getElementsByClassName("input-field");
-  inputField[0].value = "test";
-  const button = container.getElementsByClassName("add-button");
-  userEvent.click(button[0]);
-  const searchItemBtn = container.getElementsByClassName("search-item-button");
-  userEvent.click(searchItemBtn[0]);
-  expect(searchItemBtn).toHaveLength(0);
+jest.mock("axios");
+
+test("SearchBar renders correctly", () => {
+  // mock the axios call to return a list of ingredients
+  axios.get.mockResolvedValueOnce({
+    data: ["Vodka", "Gin", "Rum", "Tequila", "Triple Sec", "Lime Juice"],
+  });
+  render(
+    <MemoryRouter>
+      <SearchBar />
+    </MemoryRouter>
+  );
+  // check that the search bar renders
+  expect(screen.getByRole("textbox")).toBeInTheDocument();
+  // check that the search button renders with the correct text
+  expect(screen.getByText("Search")).toBeInTheDocument();
+  // check that the add button renders with the correct text
+  expect(screen.getByText("Add")).toBeInTheDocument();
+  //check that you can type in the search bar
+  userEvent.type(screen.getByRole("textbox"), "Vodka");
+  expect(screen.getByRole("textbox")).toHaveValue("Vodka");
+  // check that the add button adds the search word to the search array
+  userEvent.click(screen.getByText("Add"));
+  expect(screen.getByText("Vodka")).toBeInTheDocument();
+  // check that the search button gets the recipes
+  //mock the axios call to return a list of recipes
 });
