@@ -50,20 +50,35 @@ function SearchBar() {
         `http://localhost:9000/cocktail/getall/${parameters}`
       );
       if (response.data !== null) {
-        
-        setRecipes(response.data);
+        updateIngredients(response.data)
+        const sortedArrayOfRecipes = response.data.sort((a, b) => {
+          return b.numberOfOverlapping - a.numberOfOverlapping
+        })
+
+        const sortedUniqueRecipes = sortedArrayOfRecipes.filter((value, index, self) => (
+          index === self.findIndex((t) => (
+            t.idDrink === value.idDrink
+          ))
+        ));
+        setRecipes(sortedUniqueRecipes);
       }
     } else if (searchWord.length > 0) {
+      const updatedSearch = search.push(searchWord);
+      setSearch(updatedSearch);
+
       const parameter = searchWord.replace(" ", "_");
       const response = await axios.get(
         `http://localhost:9000/cocktail/getall/${parameter}`
       );
-      if (response.data !== null) {
-        setRecipes(response.data);
-      }
+      updateIngredients(response.data)
+      // we don't need to sort here since we are only searching for one ingredient
+      // response.data.sort((a, b) => {
+      //   return a.numberOfOverlapping - b.numberOfOverlapping
+      // })
+      setRecipes(response.data);
     }
+  }
     
-  };
 
   const removeSearchItem = (item) => {
     const newSearch = search.filter((word) => word !== item);
@@ -110,36 +125,31 @@ function SearchBar() {
     document.querySelector(".input-field").value = "";
   };
 
-
-  const sortRecipeArray = () => {
-    
-    for (let i = 0; i < recipes.length; i++) {
+  const updateIngredients = (data) => {
+    for (let i = 0; i < data.length; i++) {
       const recipeIngredients = []
       for (let j=1; j<= 15; j++) {
-        if (recipes[i][`strIngredient${j}`] !== null) {
-          recipeIngredients.push(recipes[i][`strIngredient${j}`])
+        if (data[i][`strIngredient${j}`] !== null) {
+          recipeIngredients.push(data[i][`strIngredient${j}`])
         }
       }
+
+      const recipeIngredientsLower = recipeIngredients.map(element => element.toLowerCase())
+
+      let searchLower = search.map(element => element.toLowerCase())
+
+      var allUniqueIngredients = recipeIngredientsLower.concat(searchLower.filter((item) => recipeIngredientsLower.indexOf(item) < 0));
+
+      const numberOfOverlapping = searchLower.length + recipeIngredientsLower.length - allUniqueIngredients.length
+
+      const missingIngredients = allUniqueIngredients.length - searchLower.length
       
-
-      var allUniqueIngredients = recipeIngredients.concat(search.filter((item) => recipeIngredients.indexOf(item) < 0));
-
-      const numberOfOverlapping = search.length + recipeIngredients.length - allUniqueIngredients.length
-
-      const missingIngredients = allUniqueIngredients.length - search.length
-       
-      recipes[i].ingredientsArray = recipeIngredients
-      recipes[i].numberOfOverlapping = numberOfOverlapping
-      recipes[i].missingIngredients = missingIngredients
-      console.log("hey")
-      console.log(recipes[i])
+      data[i].ingredientsArray = recipeIngredients
+      data[i].numberOfOverlapping = numberOfOverlapping
+      data[i].missingIngredients = missingIngredients
+      
     }
-
-    // array of how many ingredients are in common
-    // const numberOfOverlappingArray = recipes.map((recipe) => recipe.numberOfOverlapping)
-    return recipes
   }
-
 
   return (
     <>

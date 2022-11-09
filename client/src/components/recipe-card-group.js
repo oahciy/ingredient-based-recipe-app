@@ -48,7 +48,8 @@ function RecipeCardGroup() {
               key={recipe.idDrink}
             >
               <RecipeCard recipe={recipe} search={search} />
-              {/* {console.log(recipes)} */}
+              {/* {console.log("this is recipe card group")}
+              {console.log(recipes)} */}
             </div>
           ))}
         </div>

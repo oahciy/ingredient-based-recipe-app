@@ -19,7 +19,7 @@ function RecipeCard({ recipe, search }) {
             {recipe.strDrink}
           </h5>
           <p className="card-text" style={{ color: "#21709c" }}>
-            {recipe.ingredientsMissing} ingredients missing
+            {recipe.missingIngredients} ingredients missing
           </p>
           <p className="card-text" style={{ color: "#21709c" }}>
             Buy missing ingredients for

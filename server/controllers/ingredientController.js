@@ -53,7 +53,6 @@ const IngredientController = {
   returnAllIngredients: async (req, res) => {
     const filter = {};
     const ingredients = await Ingredient.find(filter);
-    // console.log(ingredients);
     res.json(ingredients);
   },
 };
