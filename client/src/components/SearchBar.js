@@ -5,6 +5,7 @@ import SearchItemButton from "./SearchItemButton";
 import BackgroundImage from "../img/sb1.png";
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "./NavBar";
+// import "./SearchBar.css";
 
 function SearchBar() {
   // onClick gets all recipes
@@ -62,7 +63,7 @@ function SearchBar() {
 
   const searchBackground = {
     background: `url(${BackgroundImage}) no-repeat center center/cover`,
-    height: "270px",
+    height: "auto",
   };
 
   const suggestIngredients = (text) => {
@@ -106,7 +107,7 @@ function SearchBar() {
                 onChange={(e) => suggestIngredients(e.target.value)}
               />
             </div>
-            <div className="col-1 m-2">
+            <div className="col-1 m-2 text-center">
               <button
                 className="add-button btn btn-primary"
                 style={{ backgroundColor: "#20577b", borderColor: "#20577b" }}
@@ -118,7 +119,7 @@ function SearchBar() {
             <div className="col-1 m-2">
               <Link to="/recipes">
                 <button
-                  className="search-button btn btn-primary"
+                  className="search-button btn btn-primary text-center"
                   style={{
                     backgroundColor: "#20577b",
                     borderColor: "#20577b",
@@ -131,8 +132,8 @@ function SearchBar() {
             </div>
           </div>
           <div className="m-2">
-            <div className="row d-flex justify-content-around">
-              <div className="col-6">
+            <div className="row row-cols-auto d-flex justify-content-around">
+              <div className="col-6 text-center">
                 {suggestions.map((suggestion, i) => (
                   <button
                     className="search-item-button add-button m-2 btn btn-primary"
@@ -149,7 +150,7 @@ function SearchBar() {
                   </button>
                 ))}
               </div>
-              <div className="col-6">
+              <div className="added col-6">
                 {search?.map((item) => (
                   <div
                     className="d-inline"
