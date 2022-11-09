@@ -5,6 +5,7 @@ import SearchItemButton from "./SearchItemButton";
 import BackgroundImage from "../img/sb1.png";
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "./NavBar";
+// import "./SearchBar.css";
 
 function SearchBar() {
   // onClick gets all recipes
@@ -23,32 +24,27 @@ function SearchBar() {
     };
     loadAllIngredients();
 
-    const el = document.getElementById('search-box');
+    const el = document.getElementById("search-box");
 
-    el.addEventListener('keydown', e => {
-      if(e.key === 'Enter'){
-        
-        const typedSearchWord = document.querySelector(".input-field").value
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const typedSearchWord = document.querySelector(".input-field").value;
 
         if (!search.includes(typedSearchWord) && typedSearchWord.length > 0) {
-          console.log('hey1')
+          console.log("hey1");
           const updatedSearch = search.push(typedSearchWord);
-          console.log("updated search" + updatedSearch)
+          console.log("updated search" + updatedSearch);
           setSearch(updatedSearch);
-          
-        } 
-        getRecipes()
-        document.querySelector(".input-field").value = ''
+        }
+        getRecipes();
+        document.querySelector(".input-field").value = "";
       }
-    })
-
+    });
   }, []);
 
-
-
   const getRecipes = async () => {
-    console.log('function')
-    console.log(searchWord)
+    console.log("function");
+    console.log(searchWord);
     if (search.length > 0) {
       const parameters = search.map((word) => word.replace(" ", "_"));
       const response = await axios.get(
@@ -85,7 +81,7 @@ function SearchBar() {
 
   const searchBackground = {
     background: `url(${BackgroundImage}) no-repeat center center/cover`,
-    height: "270px",
+    height: "auto",
   };
 
   const suggestIngredients = (text) => {
@@ -119,8 +115,6 @@ function SearchBar() {
   //   console.log('You pressed Enter2');
   // }
 
-  
-
   return (
     <>
       <div
@@ -133,13 +127,13 @@ function SearchBar() {
             <div className="col-md-8 p-2">
               <input
                 className="input-field form-control inputbox-transparent"
-                id = "search-box"
+                id="search-box"
                 type="text"
                 placeholder="Search for a recipe"
                 onChange={(e) => suggestIngredients(e.target.value)}
               />
             </div>
-            <div className="col-1 m-2">
+            <div className="col-1 m-2 text-center">
               <button
                 className="add-button btn btn-primary"
                 style={{ backgroundColor: "#20577b", borderColor: "#20577b" }}
@@ -151,23 +145,22 @@ function SearchBar() {
             <div className="col-1 m-2">
               <Link to="/recipes">
                 <button
-                  className="search-button btn btn-primary"
+                  className="search-button btn btn-primary text-center"
                   id="search-button"
                   style={{
                     backgroundColor: "#20577b",
-                    borderColor: "#20577b", 
+                    borderColor: "#20577b",
                   }}
-                  onClick = {getRecipes}
+                  onClick={getRecipes}
                 >
                   Search
                 </button>
-
               </Link>
             </div>
           </div>
           <div className="m-2">
-            <div className="row d-flex justify-content-around">
-              <div className="col-6">
+            <div className="row row-cols-auto d-flex justify-content-around">
+              <div className="col-6 text-center">
                 {suggestions.map((suggestion, i) => (
                   <button
                     className="search-item-button add-button m-2 btn btn-primary"
@@ -184,7 +177,7 @@ function SearchBar() {
                   </button>
                 ))}
               </div>
-              <div className="col-6">
+              <div className="added col-6">
                 {search?.map((item) => (
                   <div
                     className="d-inline"
