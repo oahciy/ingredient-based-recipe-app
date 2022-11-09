@@ -19,7 +19,7 @@ context("home page add and search", () => {
     cy.get(".input-field").type("gin");
     cy.findByRole("button", { name: /add/i }).click();
     cy.get(".search-button").click();
-    cy.get('a[href*="/recipe/15300"]').click();
+    cy.get("#15300").click();
     cy.url().should("eq", "http://localhost:3000/recipe/15300");
     cy.findByRole("heading", { name: /3\-mile long island iced tea/i }).should(
       "be.visible"
