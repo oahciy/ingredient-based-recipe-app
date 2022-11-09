@@ -23,10 +23,28 @@ function SearchBar() {
       setIngredients(response.data);
     };
     loadAllIngredients();
-    console.log(ingredients);
+
+    const el = document.getElementById("search-box");
+
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const typedSearchWord = document.querySelector(".input-field").value;
+
+        if (!search.includes(typedSearchWord) && typedSearchWord.length > 0) {
+          console.log("hey1");
+          const updatedSearch = search.push(typedSearchWord);
+          console.log("updated search" + updatedSearch);
+          setSearch(updatedSearch);
+        }
+        getRecipes();
+        document.querySelector(".input-field").value = "";
+      }
+    });
   }, []);
 
   const getRecipes = async () => {
+    console.log("function");
+    console.log(searchWord);
     if (search.length > 0) {
       const parameters = search.map((word) => word.replace(" ", "_"));
       const response = await axios.get(
@@ -88,7 +106,14 @@ function SearchBar() {
       const updatedSearch = search.push(item);
       setSearch(updatedSearch);
     }
+    document.querySelector(".input-field").value = "";
   };
+
+  // const searchWithEnterButton = (e) => {
+  //   e.preventDefault();
+  //   console.log('You pressed Enter1')
+  //   console.log('You pressed Enter2');
+  // }
 
   return (
     <>
@@ -102,6 +127,7 @@ function SearchBar() {
             <div className="col-md-8 p-2">
               <input
                 className="input-field form-control inputbox-transparent"
+                id="search-box"
                 type="text"
                 placeholder="Search for a recipe"
                 onChange={(e) => suggestIngredients(e.target.value)}
@@ -120,6 +146,7 @@ function SearchBar() {
               <Link to="/recipes">
                 <button
                   className="search-button btn btn-primary text-center"
+                  id="search-button"
                   style={{
                     backgroundColor: "#20577b",
                     borderColor: "#20577b",

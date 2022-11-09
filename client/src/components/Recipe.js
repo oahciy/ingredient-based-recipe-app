@@ -11,15 +11,23 @@ function Recipe() {
   const getRecipe = async () => {
     const id = window.location.href.split("/").reverse()[0];
     const response = await axios.get(`http://localhost:9000/recipe/${id}`);
-    const drink = response.data.drinks[0]
+    const drink = response.data.drinks[0];
     setRecipe(drink);
 
     let ingredientsArray = [];
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
-        const drinkPriceResponse = await getIngredientFromDb(drink[`strIngredient${i}`])
-        console.log(drinkPriceResponse.data)
-        ingredientsArray.push([drink[`strIngredient${i}`], drink[`strMeasure${i}`], drinkPriceResponse.data.priceItem, drinkPriceResponse.data.trolleyLink, drinkPriceResponse.data.strDescription]);
+        const drinkPriceResponse = await getIngredientFromDb(
+          drink[`strIngredient${i}`]
+        );
+        console.log(drinkPriceResponse.data);
+        ingredientsArray.push([
+          drink[`strIngredient${i}`],
+          drink[`strMeasure${i}`],
+          drinkPriceResponse.data.priceItem,
+          drinkPriceResponse.data.trolleyLink,
+          drinkPriceResponse.data.strDescription,
+        ]);
         // ingredientsArray.push(`${drink[`strIngredient${i}`]} ${drink[`strMeasure${i}`]} buy for £${drinkPriceResponse.data.priceUnit}`);
       }
     }
@@ -31,26 +39,40 @@ function Recipe() {
   }, []);
 
   const getIngredientFromDb = async (item) => {
-    const response = await axios.get(`http://localhost:9000/ingredient/${item}`)
-    console.log(response)
-    return response
+    const response = await axios.get(
+      `http://localhost:9000/ingredient/${item}`
+    );
+    console.log(response);
+    return response;
   };
 
   return (
     <div>
-      <div><img src={drink.strDrinkThumb} alt="Cocktail thumbnail"></img></div>
-      <div><h3>{drink.strDrink}</h3></div>
+      <div>
+        <img src={drink.strDrinkThumb} alt="Cocktail thumbnail"></img>
+      </div>
+      <div>
+        <h3>{drink.strDrink}</h3>
+      </div>
       {content.map((ingredient) => (
         <div key={ingredient}>
-          <li>
-            <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ingredientInfo" aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
+          <li class="ingredient-dropdown">
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#ingredientInfo"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              {ingredient[0]}
+            </button>{" "}
+            {ingredient[1]}{" "}
+            <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
             <div class="collapse" id="ingredientInfo">
-              <div class="card card-body">
-                {ingredient[4]}
-              </div>
+              <div class="card card-body">{ingredient[4]}</div>
             </div>
             {/* {ingredient[0]} {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a> */}
-            
           </li>
         </div>
       ))}
