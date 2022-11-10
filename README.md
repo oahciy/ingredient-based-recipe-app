@@ -73,7 +73,7 @@ This application was designed with the primary purpose of helping individuals re
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * ![JavaScript][JavaScript-shield]
-* [![NodeJS][NodeJS-shield]
+* ![NodeJS][NodeJS-shield]
 * [![Express][Express-shield]][Express-url]
 * [![HTML][HTML-shield]][HTML-url]
 * [![CSS][CSS-shield]]
