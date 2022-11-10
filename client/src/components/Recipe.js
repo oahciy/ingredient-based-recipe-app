@@ -37,14 +37,16 @@ function Recipe() {
   };
 
   return (
-    <div>
+    <div className="background-gradient">
+      
       <div className="container">
-        <div className="row">
+        <div className="row pt-4">
           <div className="col"></div>
           <div className="col-11">
             <div className="card mb-3" >
               <div className="row g-0">
                 <div className="col-md-4">
+
                   <img src={drink.strDrinkThumb} className="img-fluid rounded-start" alt="..."></img>
                 </div>
                 <div className="col-md-8">
