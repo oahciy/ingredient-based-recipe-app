@@ -1,5 +1,5 @@
 import React from "react";
-import logoDark from "../img/logo-dark-removebg-preview.png";
+import logoDark from "../img/logo-dark-removebg.png";
 
 function Navbar() {
   const title = {

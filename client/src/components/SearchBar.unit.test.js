@@ -1,4 +1,4 @@
-import { render, screen, waitFor, rerender } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SearchBar from "./SearchBar";
 import { MemoryRouter } from "react-router-dom";
@@ -9,8 +9,14 @@ import { mockIngredientSuggestions } from "../__mocks__/mockData";
 jest.mock("axios");
 
 const mockChildComponent = jest.fn();
+
 jest.mock("./SearchItemButton", () => (props) => {
   mockChildComponent(props);
+  return <mock-childComponent />;
+});
+
+jest.mock("./recipe-card-group", () => (props) => {
+  mockChildComponent2(props);
   return <mock-childComponent />;
 });
 
@@ -29,7 +35,7 @@ test("SearchBar renders correctly", async () => {
 
   await waitFor(() => {
     expect(
-      screen.getByPlaceholderText("Search for ingredients")
+      screen.getByPlaceholderText("Start by typing your ingredients")
     ).toBeInTheDocument();
   });
 
@@ -38,13 +44,16 @@ test("SearchBar renders correctly", async () => {
   });
 
   // type in the search bar
-  userEvent.type(screen.getByPlaceholderText("Search for ingredients"), "vod");
+  userEvent.type(
+    screen.getByPlaceholderText("Start by typing your ingredients"),
+    "vod"
+  );
 
   // check that the search bar is updated
   await waitFor(() => {
-    expect(screen.getByPlaceholderText("Search for ingredients")).toHaveValue(
-      "vod"
-    );
+    expect(
+      screen.getByPlaceholderText("Start by typing your ingredients")
+    ).toHaveValue("vod");
   });
 
   // check that the suggestions are rendered
@@ -61,7 +70,4 @@ test("SearchBar renders correctly", async () => {
       item: "Vodka",
     })
   );
-
-  // check that the search bar is cleared
-  // TODO: this test is failing
 });

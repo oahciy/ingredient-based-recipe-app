@@ -18,6 +18,8 @@ jest.mock("react-router-dom", () => ({
 
 jest.mock("axios");
 
+String.prototype.toLowerCase = jest.fn().mockImplementation(() => "vodka");
+
 const mockChildComponent = jest.fn();
 jest.mock("./recipe-card", () => (props) => {
   mockChildComponent(props);
