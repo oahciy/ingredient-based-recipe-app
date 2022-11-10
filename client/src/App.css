@@ -93,4 +93,24 @@
   min-height: 100vh;
 }
 
+/* footer style */
+/* .App {
+  font-family: sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+footer {
+  background: linear-gradient(90deg, #E0B565ff 0%, #EA8507ff 100%);
+  text-align: center;
+  margin-top: auto;
+  padding: 8px;
+}
+
+footer a { 
+  color: inherit; 
+  text-decoration: none;
+} 
+
 
