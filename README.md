@@ -71,12 +71,13 @@ This application was designed with the primary purpose of helping individuals re
 ### Built With
 
 * ![JavaScript][JavaScript-shield]
+* [![NodeJS][NodeJS-shield]][NodeJS-url]
 * [![HTML][HTML-shield]][HTML-url]
 * ![CSS][CSS-shield]
 * [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![MongoDB][MongoDB-shield]][MongoDB-url]
-* [![NodeJS][NodeJS-shield]
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
