@@ -175,7 +175,7 @@ Project Link: [https://github.com/Sadat15/ingredient-based-recipe-app](https://g
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/Sadat15/ingredient-based-recipe-app.svg?style=for-the-badge
 [contributors-url]: https://github.com/Sadat15/ingredient-based-recipe-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Sadat15/ingredient-based-recipe-app.svg
+[forks-shield]: https://img.shields.io/github/forks/Sadat15/ingredient-based-recipe-app.svg?style=for-the-badge
 [forks-url]: https://github.com/Sadat15/ingredient-based-recipe-app/network/members
 [issues-shield]: https://img.shields.io/github/issues/Sadat15/ingredient-based-recipe-app.svg
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
