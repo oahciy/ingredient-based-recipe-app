@@ -30,7 +30,6 @@
 </div>
 
 
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -177,11 +176,11 @@ Project Link: [https://github.com/Sadat15/ingredient-based-recipe-app](https://g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Sadat15/ingredient-based-recipe-app.svg?style=for-the-badge
+[contributors-url]: https://github.com/Sadat15/ingredient-based-recipe-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Sadat15/ingredient-based-recipe-app.svg
+[forks-url]: https://github.com/Sadat15/ingredient-based-recipe-app/network/members
+[issues-shield]: https://img.shields.io/github/issues/Sadat15/ingredient-based-recipe-app.svg
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
