@@ -193,5 +193,5 @@ Project Link: [https://github.com/Sadat15/ingredient-based-recipe-app](https://g
 [CSS-shield]: https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white
 [MongoDB-shield]: https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]: https://www.mongodb.com
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Sadat15/ingredient-based-recipe-app.svg?style=for-the-badge
 [stars-url]: https://github.com/Sadat15/ingredient-based-recipe-app/stargazers
