@@ -9,7 +9,7 @@ function Navbar() {
       "-1px 0 #EA8507ff, 0 1px #EA8507ff, 1px 0 #EA8507ff, 0 -1px #EA8507ff",
   };
   return (
-    <nav className="navbar">
+    <nav className="navbar opacity-75">
       <ul className="nav">
         <li className="nav-item">
           <a href="/">

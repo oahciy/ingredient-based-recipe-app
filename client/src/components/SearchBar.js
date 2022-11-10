@@ -72,11 +72,15 @@ function SearchBar() {
         `http://localhost:9000/cocktail/getall/${parameter}`
       );
       updateIngredients(response.data)
-      // we don't need to sort here since we are only searching for one ingredient
-      // response.data.sort((a, b) => {
-      //   return a.numberOfOverlapping - b.numberOfOverlapping
-      // })
-      setRecipes(response.data);
+      
+      const sortedArrayOfRecipes = response.data.sort((a, b) => {
+        if (a.numberOfOverlapping === b.numberOfOverlapping) {
+          return a.missingIngredients - b.missingIngredients
+        }
+        return b.numberOfOverlapping - a.numberOfOverlapping
+      })
+
+      setRecipes(sortedArrayOfRecipes);
     }
   }
     
@@ -173,8 +177,7 @@ function SearchBar() {
             </div>
             <div className="col-1 m-2 text-center">
               <button
-                className="add-button btn btn-primary"
-                style={{ backgroundColor: "#20577b", borderColor: "#20577b" }}
+                className="add-button btn btn-recipe-primary"
                 onClick={addSearchWord}
               >
                 Add
@@ -183,12 +186,8 @@ function SearchBar() {
             <div className="col-1 m-2">
               <Link to="/recipes">
                 <button
-                  className="search-button btn btn-primary text-center"
+                  className="search-button btn btn-recipe-primary text-center"
                   id="search-button"
-                  style={{
-                    backgroundColor: "#20577b",
-                    borderColor: "#20577b",
-                  }}
                   onClick={getRecipes}
                 >
                   Search
@@ -201,11 +200,7 @@ function SearchBar() {
               <div className="col-6 text-center">
                 {suggestions.map((suggestion, i) => (
                   <button
-                    className="search-item-button add-button m-2 btn btn-primary"
-                    style={{
-                      backgroundColor: "#25aec9",
-                      borderColor: "#25aec9",
-                    }}
+                    className="search-item-button add-button m-2 btn btn-recipe-secondary"
                     onClick={() => {
                       addFromSuggestion(suggestion.strIngredient);
                     }}

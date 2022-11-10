@@ -48,9 +48,9 @@ function Recipe() {
           <div className="col"></div>
           <div className="col-11">
             <div className="card mb-3 shadow-lg p-3 mb-5 bg-white rounded" >
-              <div className="row g-0">
+              <div className="row">
                 <div className="col-md-4">
-                  <img src={drink.strDrinkThumb} className="img-fluid rounded-start" alt="..."></img>
+                  <img src={drink.strDrinkThumb} className="img-fluid rounded shadow-md bg-body" alt="..."></img>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
