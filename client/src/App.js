@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/js/dist/collapse"
-import "./App.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/js/dist/collapse';
+import './App.css';
 
-import Navbar from "./components/NavBar";
-import SearchBar from "./components/SearchBar";
-import Recipe from "./components/Recipe";
-import RecipeCardGroup from "./components/recipe-card-group";
-import Footer from "./components/footer";
+import Navbar from './components/NavBar';
+import SearchBar from './components/SearchBar';
+import Recipe from './components/Recipe';
+import RecipeCardGroup from './components/recipe-card-group';
+import Footer from './components/Footer';
 
 function App() {
   return (
