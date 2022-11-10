@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-// import  { Link } from "react-router-dom";
 
 function Recipe() {
   const [drink, setRecipe] = useState([]);
@@ -17,14 +15,16 @@ function Recipe() {
     let ingredientsArray = [];
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
-        const drinkPriceResponse = await getIngredientFromDb(drink[`strIngredient${i}`])
+        const drinkPriceResponse = await getIngredientFromDb(
+          drink[`strIngredient${i}`]
+        );
         ingredientsArray.push([
-          drink[`strIngredient${i}`], 
+          drink[`strIngredient${i}`],
           drink[`strMeasure${i}`],
-           drinkPriceResponse.data.priceItem, 
-           drinkPriceResponse.data.trolleyLink, 
-           drinkPriceResponse.data.strDescription
-          ]);
+          drinkPriceResponse.data.priceItem,
+          drinkPriceResponse.data.trolleyLink,
+          drinkPriceResponse.data.strDescription,
+        ]);
       }
     }
     setContent(ingredientsArray);
@@ -35,44 +35,51 @@ function Recipe() {
   }, []);
 
   const getIngredientFromDb = async (item) => {
-    const response = await axios.get(`http://localhost:9000/ingredient/${item}`)
-    return response
+    const response = await axios.get(
+      `http://localhost:9000/ingredient/${item}`
+    );
+    return response;
   };
 
   return (
-    <div className="background-gradient">
-      
+    <div className="background-gradient-grey">
       <div className="container">
-        <div className="row pt-4">
+      <div className="row pt-4">
           <div className="col"></div>
           <div className="col-11">
-            <div className="card mb-3" >
+            <div className="card mb-3 shadow-lg p-3 mb-5 bg-white rounded" >
               <div className="row g-0">
                 <div className="col-md-4">
-
                   <img src={drink.strDrinkThumb} className="img-fluid rounded-start" alt="..."></img>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">{drink.strDrink}</h5>
-                    <div className="card-text">
-                      {/* {console.log(drink)} */}
-                      {content.map((ingredient) => (
-                        
-                        <div key={ingredient}>
-
-                          
-                          <li>
-                            <button className="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target={`#ingredientInfo`} aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
-                            <div className="collapse" id="ingredientInfo">
-                              <div className="card card-body">
-                                {ingredient[4]}
-                              </div>
-                            </div>                            
-                          </li>
-                        </div>
-                      ))}
+                    <h2 className="card-title recipe-dark-pink">{drink.strDrink}</h2>
+                    <div className="card-text">                  
+                      <table class="table">
+                        <tbody>
+                          {content.map((ingredient) => (
+                            <tr>
+                              <th scope="row">
+                              {ingredient[0]}
+                                {/* <button className="btn btn-recipe-primary" type="button" data-bs-toggle="collapse" data-bs-target={`#ingredientInfo-${ingredient[0]}`} aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> 
+                                <div className="collapse" id={`ingredientInfo-${ingredient[0]}`}>
+                                  <div className="card card-body">
+                                    {ingredient[4]}
+                                  </div>
+                                </div> */}
+                              </th>
+                              <td>{ingredient[1]}</td>
+                              <td>
+                                {ingredient[2] !== null && <a className="recipe-dark-blue" href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>}                                
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
+                    <div></div>
+                    <h5 className="recipe-dark-pink">Method:</h5>
                     <div>{drink.strInstructions}</div>
                   </div>
                 </div>

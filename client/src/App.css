@@ -87,10 +87,50 @@
   background-color: #689F7Eff;
 }
 
+.recipe-dark-pink {
+  color: #bb0f44
+}
+
+.recipe-dark-blue {
+  color: #20577b
+}
+
+.recipe-bright-blue {
+  color: #25aec9
+}
+
+.recipe-bright-orange {
+  color: #e96512
+}
+
 .background-gradient {
   background: linear-gradient(90deg, #E0B565ff 0%, #EA8507ff 100%);
   height: '100%';
   min-height: 100vh;
 }
 
+.background-gradient-grey {
+  background: linear-gradient(90deg, rgb(231, 231, 231) 0%, rgb(197, 197, 197) 100%);
+  height: '100%';
+  min-height: 100vh;
+}
+
+.btn-recipe-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: #689F7Eff;
+  --bs-btn-border-color: #689F7Eff;
+  --bs-btn-border-radius: .5rem;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+  --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+}
+
+.recipe-primary-colour {
+
+}
 
