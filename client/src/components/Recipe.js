@@ -17,17 +17,9 @@ function Recipe() {
     let ingredientsArray = [];
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
-        const drinkPriceResponse = await getIngredientFromDb(
-          drink[`strIngredient${i}`]
-        );
-        console.log(drinkPriceResponse.data);
-        ingredientsArray.push([
-          drink[`strIngredient${i}`],
-          drink[`strMeasure${i}`],
-          drinkPriceResponse.data.priceItem,
-          drinkPriceResponse.data.trolleyLink,
-          drinkPriceResponse.data.strDescription,
-        ]);
+        const drinkPriceResponse = await getIngredientFromDb(drink[`strIngredient${i}`])
+        console.log(drinkPriceResponse.data)
+        ingredientsArray.push([drink[`strIngredient${i}`], drink[`strMeasure${i}`], drinkPriceResponse.data.priceItem, drinkPriceResponse.data.trolleyLink, drinkPriceResponse.data.strDescription]);
         // ingredientsArray.push(`${drink[`strIngredient${i}`]} ${drink[`strMeasure${i}`]} buy for £${drinkPriceResponse.data.priceUnit}`);
       }
     }
@@ -39,22 +31,23 @@ function Recipe() {
   }, []);
 
   const getIngredientFromDb = async (item) => {
-    const response = await axios.get(
-      `http://localhost:9000/ingredient/${item}`
-    );
-    console.log(response);
-    return response;
+    const response = await axios.get(`http://localhost:9000/ingredient/${item}`)
+    console.log(response)
+    return response
   };
 
   return (
-    <div>
+    <div className="background-gradient">
+      
       <div className="container">
-        <div className="row">
+        <div className="row pt-4">
+
           <div className="col"></div>
           <div className="col-11">
             <div className="card mb-3" >
               <div className="row g-0">
                 <div className="col-md-4">
+
                   <img src={drink.strDrinkThumb} className="img-fluid rounded-start" alt="..."></img>
                 </div>
                 <div className="col-md-8">
