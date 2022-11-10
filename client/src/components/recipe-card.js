@@ -13,11 +13,11 @@ function RecipeCard({ recipe, search }) {
         ></img>
         <div className="card-body">
           <h5
-            className="card-title Recipe-card-header recipe-dark-pink"
+            className="card-title Recipe-card-header recipe-dark-brown"
           >
             {recipe.strDrink}
           </h5>
-          <p className="card-text recipe-dark-blue ">
+          <p className="card-text recipe-dark-moss ">
             {recipe.missingIngredients} ingredients missing
           </p>
         </div>

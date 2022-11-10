@@ -91,6 +91,14 @@
   color: #bb0f44
 }
 
+.recipe-dark-brown {
+  color: #702f2c
+}
+
+.recipe-dark-moss {
+  color: #0e5b5b
+}
+
 .recipe-dark-blue {
   color: #20577b
 }
@@ -116,37 +124,37 @@
 }
 
 .btn-recipe-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #20577b;
-  --bs-btn-border-color: #20577b;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #20577b;
-  --bs-btn-hover-border-color: #20577b;
+  --bs-btn-color: rgb(0, 0, 0);
+  --bs-btn-bg: #f3dcac;
+  --bs-btn-border-color: #f3dcac;
+  --bs-btn-hover-color: rgb(0, 0, 0);
+  --bs-btn-hover-bg: #f3dcac;
+  --bs-btn-hover-border-color: #f3dcac;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #20577b;
-  --bs-btn-active-border-color: #20577b;
+  --bs-btn-active-color: rgb(0, 0, 0);
+  --bs-btn-active-bg: #f3dcac;
+  --bs-btn-active-border-color: #f3dcac;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #20577b;
-  --bs-btn-disabled-border-color: #20577b;
+  --bs-btn-disabled-color: rgb(0, 0, 0);
+  --bs-btn-disabled-bg: #f3dcac;
+  --bs-btn-disabled-border-color: #f3dcac;
 }
 
 .btn-recipe-secondary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #25aec9;
-  --bs-btn-border-color: #25aec9;
+  --bs-btn-bg: #702f2c;
+  --bs-btn-border-color: #702f2c;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #25aec9;
-  --bs-btn-hover-border-color: #25aec9;
+  --bs-btn-hover-bg: #702f2c;
+  --bs-btn-hover-border-color: #702f2c;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #25aec9;
-  --bs-btn-active-border-color: #25aec9;
+  --bs-btn-active-bg: #702f2c;
+  --bs-btn-active-border-color: #702f2c;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #25aec9;
-  --bs-btn-disabled-border-color: #25aec9;
+  --bs-btn-disabled-bg: #702f2c;
+  --bs-btn-disabled-border-color: #702f2c;
 }
 
 .btn-recipe-ternary {
@@ -165,6 +173,11 @@
   --bs-btn-disabled-bg: #bb0f44;
   --bs-btn-disabled-border-color: #bb0f44;
 }
+
+.center-search {
+  min-height: 250px;
+}
+
 
 .recipe-primary-colour {
 

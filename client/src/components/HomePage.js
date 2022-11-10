@@ -1,14 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {cocktailIds} from './cocktail_ids'
 
 function Recipe() {
   const [drink, setRecipe] = useState([]);
   const [content, setContent] = useState([]);
 
   const getRecipe = async () => {
-    const id = window.location.href.split("/").reverse()[0];
-    const response = await axios.get(`http://localhost:9000/recipe/${id}`);
+    const id = Math.floor(Math.random() * 615);
+    const cocktailId = cocktailIds[`${id}`].idDrink
+    const response = await axios.get(`http://localhost:9000/recipe/${cocktailId}`);
     const drink = response.data.drinks[0];
     setRecipe(drink);
 

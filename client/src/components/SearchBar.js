@@ -72,7 +72,7 @@ function SearchBar() {
         `http://localhost:9000/cocktail/getall/${parameter}`
       );
       updateIngredients(response.data)
-      
+
       const sortedArrayOfRecipes = response.data.sort((a, b) => {
         if (a.numberOfOverlapping === b.numberOfOverlapping) {
           return a.missingIngredients - b.missingIngredients
@@ -159,14 +159,16 @@ function SearchBar() {
 
   return (
     <>
+    <Navbar />
       <div
-        className="search-bar d-flex search-background"
+        className=" center-search search-bar d-flex search-background align-items-center "
         style={searchBackground}
       >
+        
         <div className="container">
-          <Navbar />
-          <div className="row centre-search">
-            <div className="col-md-8 p-2">
+          
+          <div className="row centre-search align-items-center">
+            <div className="col-md-8 p-2 ">
               <input
                 className="input-field form-control inputbox-transparent"
                 id="search-box"
