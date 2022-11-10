@@ -19,7 +19,6 @@
   <h3 align="center">Ingredient based recipe app</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
     <br />
     <a href="https://github.com/Sadat15/ingredient-based-recipe-app"><strong>Explore the docs »</strong></a>
     <br />
