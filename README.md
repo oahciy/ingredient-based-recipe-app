@@ -74,8 +74,8 @@ This application was designed with the primary purpose of helping individuals re
 * [![Express][Express-shield]][Express-url]
 * [![HTML][HTML-shield]][HTML-url]
 * ![CSS][CSS-shield]
-* [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![React][React.js]][React-url]
 * [![MongoDB][MongoDB-shield]][MongoDB-url]
 
 
