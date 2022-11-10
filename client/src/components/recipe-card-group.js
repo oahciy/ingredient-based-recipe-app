@@ -6,7 +6,7 @@ function RecipeCardGroup() {
   const { search, setSearchQuery } = useOutletContext();
 
   return (
-    <div className="album py-5 background-gradient">
+    <div className="album py-5 background-gradient-grey">
       <div className="container">
         <div className="row d-flex justify-content-center">
           {recipes?.slice(0, 20).map((recipe) => (

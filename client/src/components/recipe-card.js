@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function RecipeCard({ recipe, search }) {
   return (
-    <div className="card mb-4 grow" key={recipe.idDrink}>
+    <div className="card mb-4 grow shadow-lg mb-5 bg-white rounded" key={recipe.idDrink}>
       <Link to={`/recipe/${recipe.idDrink}`} style={{ textDecoration: "none" }}>
         <img
           src={recipe.strDrinkThumb}
@@ -13,22 +13,14 @@ function RecipeCard({ recipe, search }) {
         ></img>
         <div className="card-body">
           <h5
-            className="card-title Recipe-card-header"
-            style={{ color: "#be1045" }}
+            className="card-title Recipe-card-header recipe-dark-brown"
           >
             {recipe.strDrink}
           </h5>
-          <p className="card-text" style={{ color: "#21709c" }}>
+          <p className="card-text recipe-dark-moss ">
             {recipe.missingIngredients} ingredients missing
           </p>
-          <p className="card-text" style={{ color: "#21709c" }}>
-            Buy missing ingredients for
-          </p>
         </div>
-        <div className="card-footer text-muted d-flex justify-content-between align-items-center">
-          <div>Rating</div>
-        </div>
-        {/* </a> */}
       </Link>
     </div>
   );

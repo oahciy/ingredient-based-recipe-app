@@ -4,12 +4,10 @@ import logoDark from "../img/logo-dark-removebg-preview.png";
 function Navbar() {
   const title = {
     fontFamily: "Montserrat, sans-serif",
-    color: "white",
-    textShadow:
-      "-1px 0 #EA8507ff, 0 1px #EA8507ff, 1px 0 #EA8507ff, 0 -1px #EA8507ff",
+    color: '#fff',    
   };
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={{backgroundColor: '#702f2c'}} >
       <ul className="nav">
         <li className="nav-item">
           <a href="/">

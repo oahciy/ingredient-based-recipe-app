@@ -4,11 +4,12 @@ import 'bootstrap/js/dist/collapse';
 import './App.css';
 
 
-import Navbar from './components/NavBar';
-import SearchBar from './components/SearchBar';
-import Recipe from './components/Recipe';
-import RecipeCardGroup from './components/recipe-card-group';
-import Footer from './components/Footer';
+import Navbar from "./components/NavBar";
+import SearchBar from "./components/SearchBar";
+import Recipe from "./components/Recipe";
+import RecipeCardGroup from "./components/recipe-card-group";
+import HomePage from "./components/HomePage";
+
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           }
         >
           {/* currently the homepage is rendered using React component SearchBar, could be changed later */}
-          <Route path="/" element={<RecipeCardGroup />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="recipes" element={<RecipeCardGroup />} />
           <Route path="recipe/:id" element={<Recipe />} />
         </Route>

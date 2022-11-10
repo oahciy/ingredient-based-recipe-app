@@ -87,10 +87,101 @@
   background-color: #689F7Eff;
 }
 
+.recipe-dark-pink {
+  color: #bb0f44
+}
+
+.recipe-dark-brown {
+  color: #702f2c
+}
+
+.recipe-dark-moss {
+  color: #0e5b5b
+}
+
+.recipe-dark-blue {
+  color: #20577b
+}
+
+.recipe-bright-blue {
+  color: #25aec9
+}
+
+.recipe-bright-orange {
+  color: #e96512
+}
+
 .background-gradient {
   background: linear-gradient(90deg, #E0B565ff 0%, #EA8507ff 100%);
   height: '100%';
   min-height: 100vh;
+}
+
+
+.background-gradient-grey {
+  background: linear-gradient(90deg, rgb(231, 231, 231) 0%, rgb(197, 197, 197) 100%);
+  height: '100%';
+  min-height: 100vh;
+}
+
+.btn-recipe-primary {
+  --bs-btn-color: rgb(0, 0, 0);
+  --bs-btn-bg: #f3dcac;
+  --bs-btn-border-color: #f3dcac;
+  --bs-btn-hover-color: rgb(0, 0, 0);
+  --bs-btn-hover-bg: #f3dcac;
+  --bs-btn-hover-border-color: #f3dcac;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: rgb(0, 0, 0);
+  --bs-btn-active-bg: #f3dcac;
+  --bs-btn-active-border-color: #f3dcac;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: rgb(0, 0, 0);
+  --bs-btn-disabled-bg: #f3dcac;
+  --bs-btn-disabled-border-color: #f3dcac;
+}
+
+.btn-recipe-secondary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #702f2c;
+  --bs-btn-border-color: #702f2c;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #702f2c;
+  --bs-btn-hover-border-color: #702f2c;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #702f2c;
+  --bs-btn-active-border-color: #702f2c;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #702f2c;
+  --bs-btn-disabled-border-color: #702f2c;
+}
+
+.btn-recipe-ternary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #bb0f44;
+  --bs-btn-border-color: #bb0f44;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #bb0f44;
+  --bs-btn-hover-border-color: #bb0f44;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #bb0f44;
+  --bs-btn-active-border-color: #bb0f44;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #bb0f44;
+  --bs-btn-disabled-border-color: #bb0f44;
+}
+
+.center-search {
+  min-height: 250px;
+}
+
+
+.recipe-primary-colour {
+
 }
 
 /* footer style */
