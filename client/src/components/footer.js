@@ -11,7 +11,8 @@ function Footer () {
         <a href="https://github.com/MarinaIvanova-1"> Marina</a>, 
         <a href="https://github.com/Sadat15"> Sadat</a>, 
         <a href="https://github.com/TomMannion"> Thomas</a>, and 
-        <a href="https://github.com/oahciy"> Yichao</a>.</p>
+        <a href="https://github.com/oahciy"> Yichao</a> @
+        <a href="https://makers.tech/">Makers</a>.</p>
         
       </footer>
     </div>
