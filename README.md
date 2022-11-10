@@ -128,8 +128,12 @@ INSERT SCREENSHOTS HERE
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] 
-- [ ] 
+- [ ] Small improvements
+    - [ ] Regular price update
+    - [ ] Price for individual cocktails
+- [ ] Search a cocktail by its name
+- [ ] Food recipes
+
 
 
 See the [open issues](https://github.com/Sadat15/ingredient-based-recipe-app/issues) for a full list of proposed features (and known issues).
