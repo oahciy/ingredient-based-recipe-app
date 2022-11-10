@@ -18,9 +18,13 @@ function Recipe() {
     for (let i = 1; i <= 15; i++) {
       if (drink[`strIngredient${i}`] !== null) {
         const drinkPriceResponse = await getIngredientFromDb(drink[`strIngredient${i}`])
-        console.log(drinkPriceResponse.data)
-        ingredientsArray.push([drink[`strIngredient${i}`], drink[`strMeasure${i}`], drinkPriceResponse.data.priceItem, drinkPriceResponse.data.trolleyLink, drinkPriceResponse.data.strDescription]);
-        // ingredientsArray.push(`${drink[`strIngredient${i}`]} ${drink[`strMeasure${i}`]} buy for £${drinkPriceResponse.data.priceUnit}`);
+        ingredientsArray.push([
+          drink[`strIngredient${i}`], 
+          drink[`strMeasure${i}`],
+           drinkPriceResponse.data.priceItem, 
+           drinkPriceResponse.data.trolleyLink, 
+           drinkPriceResponse.data.strDescription
+          ]);
       }
     }
     setContent(ingredientsArray);
@@ -32,7 +36,6 @@ function Recipe() {
 
   const getIngredientFromDb = async (item) => {
     const response = await axios.get(`http://localhost:9000/ingredient/${item}`)
-    console.log(response)
     return response
   };
 
@@ -53,19 +56,19 @@ function Recipe() {
                   <div className="card-body">
                     <h5 className="card-title">{drink.strDrink}</h5>
                     <div className="card-text">
+                      {/* {console.log(drink)} */}
                       {content.map((ingredient) => (
+                        
                         <div key={ingredient}>
 
                           
                           <li>
-                            <button className="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ingredientInfo" aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
+                            <button className="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target={`#ingredientInfo`} aria-expanded="false" aria-controls="collapseExample">{ingredient[0]}</button> {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a>
                             <div className="collapse" id="ingredientInfo">
                               <div className="card card-body">
                                 {ingredient[4]}
                               </div>
-                            </div>
-                            {/* {ingredient[0]} {ingredient[1]} <a href={`${ingredient[3]}`}>buy for £{ingredient[2]}</a> */}
-                            
+                            </div>                            
                           </li>
                         </div>
                       ))}
