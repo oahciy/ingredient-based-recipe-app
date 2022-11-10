@@ -7,6 +7,7 @@ import Navbar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import Recipe from "./components/Recipe";
 import RecipeCardGroup from "./components/recipe-card-group";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <>
               {/* <Navbar /> */}
               <SearchBar />
+              <Footer />
             </>
           }
         >
