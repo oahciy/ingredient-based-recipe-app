@@ -69,7 +69,7 @@ This application was designed with the primary purpose of helping individuals re
 
 ### Built With
 
-* ![JavaScript][JavaScript-shield]
+* [![JavaScript][JavaScript-shield]][JavaScript-url]
 * [![NodeJS][NodeJS-shield]][NodeJS-url]
 * [![Express][Express-shield]][Express-url]
 * [![HTML][HTML-shield]][HTML-url]
@@ -187,6 +187,7 @@ Project Link: [https://github.com/Sadat15/ingredient-based-recipe-app](https://g
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JavaScript-shield]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [NodeJS-shield]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
 [NodeJS-url]: https://nodejs.org/en/
 [Express-shield]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
