@@ -71,6 +71,7 @@ This application was designed with the primary purpose of helping individuals re
 
 * ![JavaScript][JavaScript-shield]
 * [![NodeJS][NodeJS-shield]][NodeJS-url]
+* [![Express][Express-shield]][Express-url]
 * [![HTML][HTML-shield]][HTML-url]
 * ![CSS][CSS-shield]
 * [![React][React.js]][React-url]
