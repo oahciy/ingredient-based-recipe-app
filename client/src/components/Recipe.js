@@ -41,6 +41,7 @@ function Recipe() {
       
       <div className="container">
         <div className="row pt-4">
+
           <div className="col"></div>
           <div className="col-11">
             <div className="card mb-3" >
