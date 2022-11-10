@@ -70,15 +70,13 @@ This application was designed with the primary purpose of helping individuals re
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * ![JavaScript][JavaScript-shield]
-
 * [![HTML][HTML-shield]][HTML-url]
 * ![CSS][CSS-shield]
 * [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![MongoDB][MongoDB-shield]][MongoDB-url]
+* [![NodeJS][NodeJS-shield]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
