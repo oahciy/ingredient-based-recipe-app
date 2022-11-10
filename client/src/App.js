@@ -9,6 +9,8 @@ import SearchBar from "./components/SearchBar";
 import Recipe from "./components/Recipe";
 import RecipeCardGroup from "./components/recipe-card-group";
 import HomePage from "./components/HomePage";
+import Footer from "./components/Footer";
+
 
 
 function App() {
