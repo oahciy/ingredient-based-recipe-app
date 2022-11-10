@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/js/dist/collapse';
 import './App.css';
 
+
 import Navbar from './components/NavBar';
 import SearchBar from './components/SearchBar';
 import Recipe from './components/Recipe';
