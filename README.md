@@ -168,6 +168,7 @@ Project Link: [https://github.com/Sadat15/ingredient-based-recipe-app](https://g
 ## Acknowledgments
 
 * [Img Shields](https://shields.io)
+* [Trolley](https://www.trolley.co.uk/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
