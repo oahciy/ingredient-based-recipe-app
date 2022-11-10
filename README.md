@@ -74,7 +74,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * ![JavaScript][JavaScript-shield]
 * [![NodeJS][NodeJS-shield][NodeJS-url]
-* [![Express]][Express-shield][Express-url]
+
 * [![HTML][HTML-shield]][HTML-url]
 * ![CSS][CSS-shield]
 * [![React][React.js]][React-url]
