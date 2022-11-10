@@ -50,6 +50,9 @@ function SearchBar() {
       if (response.data !== null) {
         updateIngredients(response.data)
         const sortedArrayOfRecipes = response.data.sort((a, b) => {
+          if (a.numberOfOverlapping === b.numberOfOverlapping) {
+            return a.missingIngredients - b.missingIngredients
+          }
           return b.numberOfOverlapping - a.numberOfOverlapping
         })
 
@@ -164,7 +167,7 @@ function SearchBar() {
                 className="input-field form-control inputbox-transparent"
                 id="search-box"
                 type="text"
-                placeholder="Search for a recipe"
+                placeholder="Start by typing your ingredients"
                 onChange={(e) => suggestIngredients(e.target.value)}
               />
             </div>
