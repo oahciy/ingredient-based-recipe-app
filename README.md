@@ -59,7 +59,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+INSERT SCREENSHOTS HERE
 
 This application was designed with the primary purpose of helping individuals reduce waste, instead of throwing away food or drinks, we want to encourage one to utilise whatever ingredients they have available. This application will give the user a list of different recipes that can be made with the ingredients the user has provided. 
 
