@@ -31,9 +31,8 @@ function SearchBar() {
         const typedSearchWord = document.querySelector(".input-field").value;
 
         if (!search.includes(typedSearchWord) && typedSearchWord.length > 0) {
-          console.log("hey1");
+
           const updatedSearch = search.push(typedSearchWord);
-          console.log("updated search" + updatedSearch);
           setSearch(updatedSearch);
         }
         getRecipes();
@@ -43,26 +42,41 @@ function SearchBar() {
   }, []);
 
   const getRecipes = async () => {
-    console.log("function");
-    console.log(searchWord);
     if (search.length > 0) {
       const parameters = search.map((word) => word.replace(" ", "_"));
       const response = await axios.get(
-        `http://localhost:9000/recipes/${parameters}`
+        `http://localhost:9000/cocktail/getall/${parameters}`
       );
       if (response.data !== null) {
-        setRecipes(response.data);
+        updateIngredients(response.data)
+        const sortedArrayOfRecipes = response.data.sort((a, b) => {
+          return b.numberOfOverlapping - a.numberOfOverlapping
+        })
+
+        const sortedUniqueRecipes = sortedArrayOfRecipes.filter((value, index, self) => (
+          index === self.findIndex((t) => (
+            t.idDrink === value.idDrink
+          ))
+        ));
+        setRecipes(sortedUniqueRecipes);
       }
     } else if (searchWord.length > 0) {
+      const updatedSearch = search.push(searchWord);
+      setSearch(updatedSearch);
+
       const parameter = searchWord.replace(" ", "_");
       const response = await axios.get(
-        `http://localhost:9000/recipes/${parameter}`
+        `http://localhost:9000/cocktail/getall/${parameter}`
       );
-      if (response.data !== null) {
-        setRecipes(response.data);
-      }
+      updateIngredients(response.data)
+      // we don't need to sort here since we are only searching for one ingredient
+      // response.data.sort((a, b) => {
+      //   return a.numberOfOverlapping - b.numberOfOverlapping
+      // })
+      setRecipes(response.data);
     }
-  };
+  }
+    
 
   const removeSearchItem = (item) => {
     const newSearch = search.filter((word) => word !== item);
@@ -109,11 +123,32 @@ function SearchBar() {
     document.querySelector(".input-field").value = "";
   };
 
-  // const searchWithEnterButton = (e) => {
-  //   e.preventDefault();
-  //   console.log('You pressed Enter1')
-  //   console.log('You pressed Enter2');
-  // }
+  const updateIngredients = (data) => {
+    for (let i = 0; i < data.length; i++) {
+      const recipeIngredients = []
+      for (let j=1; j<= 15; j++) {
+        if (data[i][`strIngredient${j}`] !== null) {
+          recipeIngredients.push(data[i][`strIngredient${j}`])
+        }
+      }
+
+      const recipeIngredientsLower = recipeIngredients.map(element => element.toLowerCase())
+
+      let searchLower = search.map(element => element.toLowerCase())
+
+      var allUniqueIngredients = recipeIngredientsLower.concat(searchLower.filter((item) => recipeIngredientsLower.indexOf(item) < 0));
+
+      const numberOfOverlapping = searchLower.length + recipeIngredientsLower.length - allUniqueIngredients.length
+
+      const missingIngredients = allUniqueIngredients.length - searchLower.length
+      
+      data[i].ingredientsArray = recipeIngredients
+      data[i].numberOfOverlapping = numberOfOverlapping
+      data[i].missingIngredients = missingIngredients
+      
+    }
+  }
+
 
   return (
     <>
@@ -198,3 +233,17 @@ function SearchBar() {
 }
 
 export default SearchBar;
+
+// Sorting strategy
+
+// [1,2,3] - search
+
+// [2,5,8,9,3] - recipe 1 - overlap is [2, 3] - length is 2, missing ingredients ingredients.length - overlap.length (3)
+
+// [2,6,7] - recipe 2 - overlap is [2] - length is 1, missing ingredients ingredients.length - overlap.length (2)
+
+// [1,2,3,4,7,9] - recipe 3 - overlap is [1,2,3] - length is 3, missing ingredients ingredients.length - overlap.length (3)
+
+// [2,5,8,3] - recipe 4 - overlap is [2, 3] - length is 2, missing ingredients ingredients.length - overlap.length (2)
+
+// sorting: 3, 4, 1, 2
