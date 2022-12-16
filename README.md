@@ -13,9 +13,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    
   </a>
-
   <h3 align="center">Ingredient based recipe app</h3>
 
   <p align="center">
@@ -27,7 +25,6 @@
     <a href="https://github.com/Sadat15/ingredient-based-recipe-app/issues">Request Feature</a>
   </p>
 </div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
