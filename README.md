@@ -120,7 +120,7 @@ Install the dependencies in both the client and server folders individually.
 
 INSERT SCREENSHOTS HERE
 
-#### Homepage
+### Homepage
 
 The homepage loads a random recipe every time it's loaded
 
