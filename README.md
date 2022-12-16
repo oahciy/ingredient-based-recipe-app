@@ -126,7 +126,7 @@ The homepage loads a random recipe every time it's loaded
 
 ### Responsive search bar with ingredient suggestions
 
-![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot2.jpeg)
+![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot2.png)
 
 ### Selected ingredients are saved
 
