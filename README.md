@@ -118,13 +118,28 @@ Install the dependencies in both the client and server folders individually.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-INSERT SCREENSHOTS HERE
-
 ### Homepage
 
 The homepage loads a random recipe every time it's loaded
 
 ![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot1.jpeg)
+
+### Responsive search bar with ingredient suggestions
+
+![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot2.jpeg)
+
+### Selected ingredients are saved
+
+![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot3.jpeg)
+
+### A list of possible recipes are then displayed
+
+![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot4.jpeg)
+
+### User is then able to click on a recipe, where the ingredients are displayed along with price and quantity
+
+![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot5.jpeg)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
