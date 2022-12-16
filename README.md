@@ -120,6 +120,7 @@ Install the dependencies in both the client and server folders individually.
 
 INSERT SCREENSHOTS HERE
 
+![alt text](https://github.com/Sadat15/ingredient-based-recipe-app/blob/main/images/screenshot1.jpeg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
